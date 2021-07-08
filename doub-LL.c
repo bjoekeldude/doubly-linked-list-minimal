@@ -16,7 +16,7 @@ void linefeed(char c){
 }
 
 int is_last_item(node_t * list_item_ptr){
-	if(NULL == list_item_ptr->next_ptr) return 1;
+	if(NULL == list_item_ptr->next_ptr) exit(1);
 	else return 0;
 }
 
@@ -28,14 +28,15 @@ node_t * get_last_item_ptr(node_t * cur_item_ptr){
 
 node_t * return_new_node_ptr(){
 	node_t * new_node_ptr = malloc(sizeof(*new_node_ptr));
+	if(NULL == new_node_ptr) return 1;
 	printf("new Node created at %p!\n",(void*)new_node_ptr);
 	return new_node_ptr;
 }
 void push_back(node_t * head_of_list_ptr, node_t * new_item_ptr){
 	node_t * current_last_ptr = get_last_item_ptr(head_of_list_ptr);
 	current_last_ptr->next_ptr = new_item_ptr;
-	current_last_ptr->next_ptr->prev_ptr = current_last_ptr;
-	current_last_ptr->next_ptr->next_ptr = NULL;
+	new_item_ptr->prev_ptr = current_last_ptr;
+	new_item_ptr->next_ptr = NULL;
 }
 
 int list_item_ptrs_from(node_t * cur_item_ptr){
@@ -56,6 +57,7 @@ int main(){
 	printf("First Item created at %p",(void*)head_ptr); 
 	if (NULL == head_ptr) return 1;
 	head_ptr->next_ptr = NULL;
+	head_ptr->prev_ptr = NULL;
 
 	linefeed(' ');
 	
