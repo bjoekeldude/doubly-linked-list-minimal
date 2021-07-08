@@ -52,7 +52,7 @@ int list_item_ptrs_from(node_t * cur_item_ptr){
 int main(){
 	printf("----------------------------------\n");
 	printf("Willkommen im Linked-List Programm\n");
-	head_ptr = malloc(sizeof(*head_ptr));
+	head_ptr = (node_t*) malloc(sizeof(head_ptr));
 	printf("First Item created at %p",(void*)head_ptr); 
 	if (NULL == head_ptr) return 1;
 	head_ptr->next_ptr = NULL;
