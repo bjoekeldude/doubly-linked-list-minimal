@@ -16,7 +16,7 @@ void linefeed(char c){
 }
 
 int is_last_item(node_t * list_item_ptr){
-	if(NULL == list_item_ptr->next_ptr) exit(1);
+	if(NULL == list_item_ptr->next_ptr) return 1;
 	else return 0;
 }
 
@@ -28,15 +28,17 @@ node_t * get_last_item_ptr(node_t * cur_item_ptr){
 
 node_t * return_new_node_ptr(){
 	node_t * new_node_ptr = malloc(sizeof(*new_node_ptr));
-	if(NULL == new_node_ptr) return 1;
+	if(NULL == new_node_ptr) exit(2);
 	printf("new Node created at %p!\n",(void*)new_node_ptr);
 	return new_node_ptr;
 }
 void push_back(node_t * head_of_list_ptr, node_t * new_item_ptr){
+	printf("push back start\n");
 	node_t * current_last_ptr = get_last_item_ptr(head_of_list_ptr);
 	current_last_ptr->next_ptr = new_item_ptr;
 	new_item_ptr->prev_ptr = current_last_ptr;
 	new_item_ptr->next_ptr = NULL;
+	printf("push-back ended\n");
 }
 
 int list_item_ptrs_from(node_t * cur_item_ptr){
@@ -55,7 +57,7 @@ int main(){
 	printf("Willkommen im Linked-List Programm\n");
 	head_ptr = malloc(sizeof(*head_ptr));
 	printf("First Item created at %p",(void*)head_ptr); 
-	if (NULL == head_ptr) return 1;
+	if (NULL == head_ptr) exit(4);
 	head_ptr->next_ptr = NULL;
 	head_ptr->prev_ptr = NULL;
 
