@@ -4,7 +4,7 @@ RM=rm -rf
 
 
 all: doub-LL.c
-	$(CC) -o LinkedL doub-LL.c 
+	$(CC) -o LinkedL.exe doub-LL.c 
 
 debug: doub-LL.c
 	mkdir debug
