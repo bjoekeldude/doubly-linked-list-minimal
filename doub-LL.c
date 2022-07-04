@@ -33,12 +33,10 @@ node_t * return_new_node_ptr(){
 	return new_node_ptr;
 }
 void push_back(node_t * head_of_list_ptr, node_t * new_item_ptr){
-	printf("push back start\n");
 	node_t * current_last_ptr = get_last_item_ptr(head_of_list_ptr);
 	current_last_ptr->next_ptr = new_item_ptr;
 	new_item_ptr->prev_ptr = current_last_ptr;
 	new_item_ptr->next_ptr = NULL;
-	printf("push-back ended\n");
 }
 
 int list_item_ptrs_from(node_t * cur_item_ptr){
